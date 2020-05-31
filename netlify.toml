@@ -36,11 +36,12 @@
       "max_age":31536000,
       "include_subdomains":true
     }'''
-    Content-Security-Policy = '''
+    Content-Security-Policy-report-only = '''
     default-src 'self';
-    script-src 'self' cdnjs.cloudfare.com www.google-analytics.com ;
+    script-src 'self' cdnjs.cloudfare.com softveda.disqus.com www.google-analytics.com ;
+    style-src 'self' cdnjs.cloudfare.com ;
     img-src 'self' data: cloudauthority.dev *.google-analytics.com ;
-    connect-src 'self';
+    font-src 'self' *.fontawesome.com ;
     form-action https;
     report-to default;'''
 
