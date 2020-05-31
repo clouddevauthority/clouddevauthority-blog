@@ -8,7 +8,7 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 15  # Order that this section will appear.
 
-title = "Cloud Dev Authority"
+title = "Cloud Authority"
 subtitle = "A blog by Pratik Khasnabis"
 
 [design]
@@ -51,6 +51,6 @@ subtitle = "A blog by Pratik Khasnabis"
  css_class = ""
 +++
 
-Swagatam 🙏🏼 (Welcome) to my blog. I am a Cloud Architect and Developer at heart. I love software engineering and technology in general. Here you will find me sharing my own learnings, ramblings and thoughts as I continue by journey.
+Swagatam 🙏🏼 (Welcome) to my blog. I am a Cloud Architect and a Developer at heart. I love software development and technology in general. Here you will find me sharing my own learnings, opinions and thoughts as I continue by journey.
 
 
