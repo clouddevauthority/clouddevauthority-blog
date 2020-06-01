@@ -39,7 +39,7 @@
     Content-Security-Policy = "form-action https"
     Content-Security-Policy-report-only = '''
     default-src 'self';
-    script-src 'self' cdnjs.cloudfare.com softveda.disqus.com www.google-analytics.com ;
+    script-src 'self' cdnjs.cloudflare.com softveda.disqus.com *.google-analytics.com ;
     style-src 'self' cdnjs.cloudflare.com ;
     img-src 'self' data: cloudauthority.dev *.google-analytics.com ;
     font-src 'self' *.fontawesome.com cdnjs.cloudflare.com fonts.gstatic.com ;    
