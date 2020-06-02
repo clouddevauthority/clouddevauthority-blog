@@ -74,6 +74,7 @@ email: ""
 
 Pratik is a Cloud Architect with extensive experience in Microsoft Azure and related technology stack, especially .Net. He has 20+ years experience as an architect, tech lead and developer. His interests include digital transformation, cloud computing, microservices, API design, DevOps, .Net and AppSec. He is a hands-on coding architect, who seeks to learn new technology and experiment with them.
 
-Outside of technology Pratik enjoys travelling, loves food and cooking and is a star wars tragic.
+Outside of technology Pratik enjoys travelling, travel photography, loves food and cooking and is a Star Wars tragic.
 
-*"You cannot cross the sea merely by standing and staring at the water" - Rabindranath Tagore* 
+---
+>*"You cannot cross the sea merely by standing and staring at the water"* - [Rabindranath Tagore](https://en.wikipedia.org/wiki/Rabindranath_Tagore) 
