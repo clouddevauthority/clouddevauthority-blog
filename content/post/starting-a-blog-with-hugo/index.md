@@ -30,18 +30,18 @@ projects: []
 ## Cloud Authority - My new blog
 
 Welcome to my new blog, with some trepidation I am posting my first blog post at nearly the stoke of midnight on June 1, 2020.
-Primarily I am going to write on technology that I get to work with daily or learning as a Cloud Architect, like Azure, APIs, Microservices, DevOps, AppSec etc.
+Primarily I am going to write on technology that I get to work with daily or I am learning as a Cloud Architect; like Azure, APIs, Microservices, DevOps, AppSec etc.
 I will also write my opinions on thoughts on IT industry in general as I observe it.
 I want to throw in reviews of books, articles, tools etc. I come across as well.
 
 I don't claim you will find something fundamental or original here, there are many competent bloggers and technology masters out there, who will write on the same topics, perhaps more eloquently.
-But I will bring my own perspective and  I hope you will get something useful out of this.
+But I will bring my own perspective and I hope you will get something useful out of this.
 
 This is my second attempt at starting a Blog. I tried once about 3-4 years back, and I wasn't committed enough to sustain it, I even lost the domain.
 
 I am now working from home due to the COVID 19 situation and decided I will try once more to write a blog.
 I admit that part of the reason is to do personal branding but mostly I really want to share some of what I learn and discover.
-I find that speaking or presenting something enforces the learning.
+I find that speaking or presenting on something enforces the learning. I hope writing this blog will make me a better architect and developer.
 
 ## Tech stack of the blog
 
@@ -81,15 +81,21 @@ The first result wasn't that good. I got a **D** as the site was missing many he
 
 ![Security Headers Initial Test Result](img/securityheaders-initial-check.png)
 
-After tweaking the Netlify.toml file to add response headers I was able to get an **A**.
+After tweaking the Netlify.toml file to add response headers I was able to get an **A+**.
 The final result is shown below.
 I will continue to tune this as I go.
 
 ![Security Headers Final Test Result](img/securityheaders-final-check.png)
 
+### Configuring Report-Uri
+
+I created an account at [Report-Uri](https://report-uri.com) a project by Scott Helme. Report-Uri is a monitoring platform that captures browser reported CSP violations. i.e. if the scripts, css etc. on your site is served from unexpected domains or hosts. This dtects and prevents common attacks like XSS. All it needs is a properly configured Content-Security-Policy header. I have started in report only mode for now to just monitor and not actually block the scripts. This is how my CSP reporting graph looks.
+
+![CSP Reporting Graph](img/csp-reporting-graph.png)
+
 ### Performance check
 
-I also checked the performance of the site using 
-The result is not very great, I will try to optimise the performance, but for now I am happy to publish the blog.
+I also checked the performance of the site at Google Dev [Measure](https://web.dev/measure/).
+The result is not great, I will try to optimise the performance, but for now I am happy to publish the blog.
 
 ![Performance Test Result](img/performance-check.png)
