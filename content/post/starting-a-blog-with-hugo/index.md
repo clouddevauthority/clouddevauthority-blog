@@ -3,7 +3,7 @@
 
 title: "Starting a New Blog"
 subtitle: "How I created this blog"
-summary: "Creating new technology blog with Hugo, Netlify and Cloudflare"
+summary: "This is my first on this new Blog that I just created. In this post I say a few words on why I started to blog. I also describe how I used Hugo, Netlify and Cloudflare to build and host this blog site. Finally a few tips to configure the security settings for the site."
 authors: [pratik]
 tags: [blog, hugo, netlify, cloudflare]
 categories: [Technology]
