@@ -89,7 +89,7 @@ I will continue to tune this as I go.
 
 ### Configuring Report-Uri
 
-I created an account at [Report-Uri](https://report-uri.com) a project by Scott Helme. Report-Uri is a monitoring platform that captures browser reported CSP violations. i.e. if the scripts, css etc. on your site is served from unexpected domains or hosts. This dtects and prevents common attacks like XSS. All it needs is a properly configured Content-Security-Policy header. I have started in report only mode for now to just monitor and not actually block the scripts. This is how my CSP reporting graph looks.
+I created an account at [Report-Uri](https://report-uri.com) a project by Scott Helme. Report-Uri is a monitoring platform that captures browser reported CSP violations. i.e. if the scripts, css etc. on your site is served from unexpected domains or hosts. This detects and prevents common attacks like XSS. All it needs is a properly configured Content-Security-Policy header. I have started in report only mode for now to just monitor and not actually block the scripts. This is how my CSP reporting graph looks.
 
 ![CSP Reporting Graph](img/csp-reporting-graph.png)
 
