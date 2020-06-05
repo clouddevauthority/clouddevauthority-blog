@@ -11,6 +11,8 @@ date: 2020-06-01T22:00:26+10:00
 lastmod: 2020-06-01T22:00:26+10:00
 featured: false
 draft: false
+toc: true
+
 
 # Featured image
 # To use, add an image named `featured.jpg/png` to your page's folder.
@@ -42,6 +44,8 @@ This is my second attempt at starting a Blog. I tried once about 3-4 years back,
 I am now working from home due to the COVID 19 situation and decided I will try once more to write a blog.
 I admit that part of the reason is to do personal branding but mostly I really want to share some of what I learn and discover.
 I find that speaking or presenting on something enforces the learning. I hope writing this blog will make me a better architect and developer.
+
+<!-- {{% toc %}} -->
 
 ## Tech stack of the blog
 
