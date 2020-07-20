@@ -82,7 +82,7 @@ Let me first present the maximum Multi-Region HA API architecture before I descr
 ![ha-design-apim-premiumM](img/ha-design-apim-premium.png)
 
 The above design provides HA when an entire region fails. 
-E.g. If primary app service fails all API requests will still be made to the secondary app service. This is shown by the solid green lines.
+E.g. If primary App Service fails all API requests will still be made to the secondary App Service. This is shown by the solid green lines.
 
 It also caters for backend failure. If one of the App Service instance stops the API as experienced by the client will still be available online. This is shown by the dotted green lines.
 
@@ -105,15 +105,15 @@ The thing that still remains is how to configure APIM to connect to App Service 
 We will need to load balance traffic between the two regional App Service instances. 
 Azure provides several [load balancing (LB) options](https://docs.microsoft.com/en-us/azure/architecture/guide/technology-choices/load-balancing-overview). 
 
-- **Traffic Manager (TM)**: TM provides DNS based load balancing. It is a highly available (99.99%) global service and thankfully we do not have to think about making this component multi-region. 
+- **Traffic Manager (TM)**: TM provides DNS based load balancing. It is a highly available (99.99%) global service and thankfully we do not have to think about making this component multi-region. It is also very cheap, costs $0.54 per million DNS queries and $1/month per Azure endpoint.
 - **Azure Front Door (AFD)**: It can be an alternate option but here it will be an overkill and certainly much more expensive.
-- **Azure Loab Balancer & Application Gateway**: Azure Load Balancer operates at Layer 4 of OSI stack and Application Gateway operate at layer 7. But these services are themselves regional and cannot do multi-region load balancing. 
+- **Azure Load Balancer (ALB) & Application Gateway (AppGw)**: ALB operates at layer 4 of OSI stack and the best for LB HTTP traffic. AppGw operates at layer 7 and is recommended for HTTP traffic. But these services are themselves regional and cannot do multi-region load balancing. 
 
 So for the simplest cost-effective design the best LB option is TM.
 
 ## The API code
 The API is a simple TodoItem API implemented in ASP.Net Core 3.1, the idea of which I borrowed from this [tutorial](https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-3.1&tabs=visual-studio). 
-The code is available in [Github](https://github.com/clouddevauthority/CloudAuthority.TodoApi).
+The code is available on [Github](https://github.com/clouddevauthority/CloudAuthority.TodoApi).
 
 I plan to have different storage backends for this API in future, like Table storage, CosmosDB and SQL Server. 
 To start with the API stores the resource entities in memory. This of course means the primary and secondary instances will return different TodoItem resources. 
@@ -267,7 +267,7 @@ I also added an API URL suffix as in want to publish many other APIs on this API
 ![apim-todoapi-settings](img/apim-todoapi-settings.png)
 
 At this point you should be able to test the API Health endpoint as shown below.
-Notice the app-service-site-name response header which shows that this response was sent from the primary app service.
+Notice the app-service-site-name response header which shows that this response was sent from the primary App Service.
 
 ![apim-testhealthcheck](img/apim-testhealthcheck.png)
 
@@ -277,7 +277,7 @@ The script to create APIM is `scripts\createazureapim.sh`
 I love using [Postman](https://www.postman.com/) to test APIs. A postman collection for this API is available in the Test folder, `TodoApiInMemory_postman_collection.json`
 Import the collection in Postman. Alternately create a new collection by importing the OpenApi yaml file.
 
-Create an environment to test Primary app service and save the baseUrl parameter value.
+Create an environment to test Primary App Service and save the baseUrl parameter value.
 
 ![test-postman-pri](img/test-postman-pri.png)
 
@@ -288,7 +288,7 @@ Now test the POST method to create a new Todo item, it should work and return HT
 Test the GET method to make sure the API returns the newly created Todo item.
 This conclusively proves that the API is working.
 
-Create a second environment for Secondary app service and test as well.
+Create a second environment for Secondary App Service and test as well.
 
 To test APIM create another environment. 
 APIM needs a subscription key in a header named Ocp-Apim-Subscription-Key. If it is not supplied a HTTP 401 (Access Denied) error will be returned. 
@@ -440,13 +440,13 @@ Build and deploy the updated API code to App Services.
 
 ### Test the secured API 
 Test the App Service endpoint from a Windows 10 PC and edge chromium browser. 
-Just browse to the the primary app service endpoint, the browser will prompt to choose a client certificate from your personal store, select the one you created earlier.
+Just browse to the the primary App Service endpoint, the browser will prompt to choose a client certificate from your personal store, select the one you created earlier.
 It should succeed proving that the client certificate settings are configured properly.
 
 ![test-browser](img/test-browser.png)
 
-If you now test the API calls to Primary or Secondary app service or APIM using Postman it would fail with HTTP 403 error.
-This is the security control we wanted to block the calls from internet to the app service API endpoint.
+If you now test the API calls to Primary or Secondary App Service or APIM using Postman it would fail with HTTP 403 error.
+This is the security control we wanted to block the calls from internet to the App Service API endpoint.
 If the attacker does not have the correct client certs the API would response with a HTTP 403 error.
 
 ![test-postman-forbidden](img/test-postman-forbidden.png)
