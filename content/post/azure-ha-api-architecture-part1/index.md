@@ -438,6 +438,40 @@ You can generate a self-signed one following the previous steps.
 
 Build and deploy the updated API code to App Services.
 
+### Securing the Health endpoint
+*Updated on 07/08/2020*
+
+There is a small concern that the Health endpoint is exposed to the world and anyone who discovers it can call the endpoint as there is no client certificate check on this endpoint.
+A simple way to mitigate this concern is to pass a secret key to the health endpoint and check that key in the Controller action. 
+In the real world the key should be stored in Azure key vault. For simplicity I am using the client cert thumbprint as the secret key and storing it the appconfig.
+Make this change in TM. The monitoring path should be ```/Health/{key}```
+The key can be passed as an header as well, but that will prevent a quick test using a browser so I have added it to the route. Traffic manager supports setting custom header.
+
+If you do this code will look like this:
+
+```C#
+public class HealthController : ControllerBase
+{
+  private readonly string HealthCheckKey;
+
+  public HealthController(ILogger<HealthController> logger, IConfiguration configuration)
+  {
+    HealthCheckKey = _configuration.GetSection("HealthCheckKey").Value;
+  }
+
+  public ActionResult<string> GetHealthCheck([FromRoute] string key)
+  {
+    _logger.LogInformation("Checking Health of Application");
+    if (string.CompareOrdinal(key, HealthCheckKey) != 0)
+    {
+      return Forbid();
+    }
+
+    return Ok("HealthCheck OK");
+  }
+}
+```
+
 ### Test the secured API 
 Test the App Service endpoint from a Windows 10 PC and edge chromium browser. 
 Just browse to the the primary App Service endpoint, the browser will prompt to choose a client certificate from your personal store, select the one you created earlier.
